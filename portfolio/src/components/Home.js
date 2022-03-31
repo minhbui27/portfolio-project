@@ -1,4 +1,6 @@
 import React from 'react'
+import IntroductionDiv from './IntroductionDiv'
+import ProjectDiv from './ProjectsDiv'
 import {useEffect, useState} from 'react'
 import '../index.css'
 import {motion, useMotionValue} from "framer-motion"
@@ -226,13 +228,10 @@ const Home = () => {
                 </div>
                 
             </motion.div>
-            <motion.div className="p-8 bg-gray-800 flex flex-col h-screen">
-                <motion.h1
-                className="text-white text-3xl md:text-6xl lg:text-7xl"
-                style={{fontFamily:"Montserrat"}}
-
-                >MY INTERESTS</motion.h1>
-            </motion.div>
+            {/* The component below encloses the Introduction div, which has a heigh=screen and padding of 8px*/}
+            <IntroductionDiv/>
+            {/* The component below encloses the Projects div, contents will be added later*/}
+            <ProjectDiv/>
         </motion.div>
     )
 }
