@@ -1,13 +1,33 @@
 import React from 'react'
-import {Link, useLocation} from 'react-router-dom'
+import { useEffect } from 'react'
+import {useLocation} from 'react-router-dom'
+import { HashLink as Link } from 'react-router-hash-link'
 import {useState} from 'react'
+import './Nav.scss'
 
-const Nav = () => {
+function Nav() {
+    const [scroll,setScroll] = useState(0);
+    //This function helps to change the color of the navbar depending on the current location
+    //of window.scrollY
+    const handleScroll = () => {
+        const position = window.scrollY;
+        // console.log(position/window.innerHeight)
+        setScroll(position/window.innerHeight);
+    } 
+    //This useEffects outputs the current scroll position of the window
+    useEffect(() => {
+        window.addEventListener('scroll',handleScroll);
+        //cleanup function
+        return () => {
+            window.removeEventListener('scroll',handleScroll);
+        };
+    },[])
+
     const location = useLocation()
     const path_name = location.pathname
     const [menu,setMenu] = useState(true);
     return(
-    <nav className="bg-gray-900">
+    <nav className= {(scroll<1 ? 'Welcome' : 'IntroductionDiv')}>
         <div className="sm:px-6 lg:pr-16 lg:pl-8">
             <div className="relative flex items-center justify-between h-16">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -50,13 +70,13 @@ const Nav = () => {
                     <div className="hidden sm:block">
                     <div className="flex space-x-4">
                         {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-                        <Link to="/" className={(path_name === "/" ? "bg-gray-900" : "hover:bg-gray-700") + " text-white text-base px-3 py-2 rounded-md text-sm font-medium"} aria-current="page">Home</Link>
+                        <Link to="/#home" className={(path_name === "/" ? "bg-gray-900" : "hover:bg-gray-700") + " text-white text-base px-3 py-2 rounded-md text-sm font-medium"} aria-current="page">Home</Link>
 
-                        <Link to="/projects" className={(path_name === "/projects" ? "bg-gray-900" : "hover:bg-gray-700") + " text-base text-white px-3 py-2 rounded-md text-sm font-medium"}>Projects</Link>
+                        <Link to="/#introduction" className={(path_name === "/projects" ? "bg-gray-900" : "hover:bg-gray-700") + " text-base text-white px-3 py-2 rounded-md text-sm font-medium"}>Introduction</Link>
 
-                        <Link to="/about" className={(path_name === "/about" ? "bg-gray-900" : "hover:bg-gray-700") + " text-base text-white px-3 py-2 rounded-md text-sm font-medium"}>About</Link>
+                        <Link to="/#hobbies" className={(path_name === "/about" ? "bg-gray-900" : "hover:bg-gray-700") + " text-base text-white px-3 py-2 rounded-md text-sm font-medium"}>Hobbies</Link>
                     
-                        <Link to="/game" className={(path_name === "/game" ? "bg-gray-900" : "hover:bg-gray-700") + " text-base text-white px-3 py-2 rounded-md text-sm font-medium"}>Game</Link>
+                        <Link to="/#projects" className={(path_name === "/game" ? "bg-gray-900" : "hover:bg-gray-700") + " text-base text-white px-3 py-2 rounded-md text-sm font-medium"}>Projects</Link>
                     </div>
                     </div>
                 </div>
@@ -66,13 +86,13 @@ const Nav = () => {
         <div className={!menu ? 'sm:hidden' : 'hidden'} id="mobile-menu">
             <div className="px-2 pt-2 pb-3 space-y-1">
                 {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-                <Link to="/" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</Link>
+                <Link to="/#home" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</Link>
 
-                <Link to="/projects" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</Link>
+                <Link to="/#introduction" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Introduction</Link>
 
-                <Link to="/about" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</Link>
+                <Link to="/#hobbies" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Hobbies</Link>
             
-                <Link to="/game" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Game</Link>
+                <Link to="/#projects" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</Link>
             </div>
         </div>
     </nav>
