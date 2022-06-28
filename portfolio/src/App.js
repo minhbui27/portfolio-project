@@ -1,9 +1,13 @@
 import Home from './components/Home'
+import Nav from './components/Nav'
+import Welcome from './components/Welcome'
+import IntroductionDiv from './components/IntroductionDiv'
+import ProjectsDiv from './components/ProjectsDiv'
+import HobbiesDiv from './components/HobbiesDiv'
 import { Route, Switch, useLocation} from 'react-router-dom'
 import './index.css'
 import {AnimatePresence} from 'framer-motion'
 import Footer from './components/Footer'
-import Game from './components/Game'
 
 function App() {
   const location = useLocation()
@@ -15,15 +19,19 @@ function App() {
           <Route exact path="/">
             <Home/>
           </Route>
-          {/* <Route path="/projects">
-            <Projects/>
+          {/* <Route path="/Welcome">
+            <Welcome/>
           </Route>
-          <Route path="/about">
-            <About/>
+          <Route path="/Introduction">
+            <IntroductionDiv/>
           </Route>
-          <Route path="/game">
-            <Game/>
+          <Route exact path="/Hobbies">
+            <HobbiesDiv/>
+          </Route>
+          <Route exact path="/Projects">
+            <ProjectsDiv/>
           </Route> */}
+         
         </Switch>
       </AnimatePresence>
      

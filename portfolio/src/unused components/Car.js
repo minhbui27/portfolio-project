@@ -9,7 +9,7 @@ title: Mazda RX-7 FD
 import React, { useRef, useEffect, useState } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
-import useKeyPress from './useKeyPress'
+import useKeyPress from '../components/useKeyPress'
 
 export default function Model(props) {
   const upArrow = useKeyPress("ArrowUp")
