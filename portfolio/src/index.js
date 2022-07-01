@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './fontawsome'
 import {BrowserRouter as Router} from 'react-router-dom';
+
 ReactDOM.render(
   <React.StrictMode>
     <Router>

@@ -2,7 +2,7 @@ import React, {Suspense, useRef, useState} from 'react'
 import {Canvas, useFrame} from '@react-three/fiber'
 import {softShadows, MeshWobbleMaterial, OrbitControls} from '@react-three/drei'
 import {useSpring, a} from '@react-spring/three'
-import Car from './Car'
+import Car from '../components/Car'
 import {motion} from 'framer-motion'
 softShadows()
 
@@ -38,7 +38,7 @@ const Game = () => {
 
                 
                 <Suspense fallback={null}>
-                    <Car/>                    
+                    <BB8/>                    
                 </Suspense>
                 <OrbitControls/>
             </Canvas>

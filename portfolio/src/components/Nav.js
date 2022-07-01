@@ -1,6 +1,5 @@
 import React from 'react'
 import { useEffect } from 'react'
-import {useLocation, Route} from 'react-router-dom'
 import { HashLink as Link } from 'react-router-hash-link'
 import {useState} from 'react'
 import './Nav.scss'
