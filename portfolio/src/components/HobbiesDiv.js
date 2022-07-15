@@ -1,6 +1,6 @@
 import React from 'react'
-import {motion} from 'framer-motion'
-const IntroductionDiv = () =>
+import {motion} from 'framer-motion/dist/framer-motion'
+const HobbiesDiv = () =>
 {
     return(
         <motion.div id="hobbies" className="p-8 bg-gray-800 flex flex-col h-screen">
@@ -12,4 +12,4 @@ const IntroductionDiv = () =>
         </motion.div>
     )
 }
-export default IntroductionDiv
+export default HobbiesDiv

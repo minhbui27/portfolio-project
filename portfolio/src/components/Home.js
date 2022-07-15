@@ -5,7 +5,7 @@ import HobbiesDiv from './HobbiesDiv'
 import Welcome from './Welcome'
 import {useEffect, useState} from 'react'
 import '../index.css'
-import {motion} from "framer-motion"
+import {motion} from "framer-motion/dist/framer-motion"
 import Nav from './Nav'
 
 

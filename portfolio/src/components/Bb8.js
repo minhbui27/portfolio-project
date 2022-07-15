@@ -9,13 +9,20 @@ title: BB8
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
+import { useScroll } from '../helpers/ScrollControls'
 
 export default function Model({ ...props }) {
   const group = useRef()
   const body = useRef()
+  const head = useRef()
+  const scroll = useScroll()
   const { nodes, materials } = useGLTF('/bb8.gltf')
-
-  useFrame(() => {body.current.rotation.z -= 0.05})
+  
+  useFrame((state,delta) => {
+    const offset = scroll.offset
+    body.current.rotation.z -= 0.001;
+    group.current.position.set(Math.sin(offset) * 10/Math.sin(1), 0, Math.sin(offset) * -4/Math.sin(1))
+  })
 
   return (
     <group ref={group} {...props} dispose={null}>
@@ -26,7 +33,7 @@ export default function Model({ ...props }) {
               <mesh geometry={nodes.Object_4.geometry} material={materials.Material} />
             </group>
           </group>
-          <group position={[-1.04, -0.13, 0]} rotation={[-0.18, 0.53, 0.19]}>
+          <group ref={head} position={[-1.04, -0.13, 0]} rotation={[-0.18, 0.53, 0.19]}>
             <group position={[-0.02, 1.37, 0.44]} rotation={[1.05, 0, 0]} scale={0.16}>
               <mesh geometry={nodes.Object_7.geometry} material={materials['Material.002']} />
             </group>

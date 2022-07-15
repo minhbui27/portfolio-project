@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "node_modules/@react-three/drei/web/ScrollControls.d.ts"  ]
 }

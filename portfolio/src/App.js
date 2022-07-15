@@ -6,7 +6,7 @@ import ProjectsDiv from './components/ProjectsDiv'
 import HobbiesDiv from './components/HobbiesDiv'
 import { Route, Switch, useLocation} from 'react-router-dom'
 import './index.css'
-import {AnimatePresence} from 'framer-motion'
+import {AnimatePresence} from 'framer-motion/dist/framer-motion'
 import Footer from './components/Footer'
 
 function App() {

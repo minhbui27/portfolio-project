@@ -79,13 +79,13 @@ function Nav() {
                     <div className="flex space-x-4">
                         {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
                         
-                        <Link spy={true} smooth={true} duration={500} to="/#home" className={(scroll < 1 ? "bg-gray-900" : "hover:bg-gray-700") + " text-white text-base px-3 py-2 rounded-md text-sm font-medium"} aria-current="page">Home</Link>
+                        <Link smooth={true} duration={500} to="/#home" className={(scroll < 1 ? "WelcomeText" : "hover:bg-gray-700 text-white") + " hover:bg-gray-900 text-base px-3 py-2 rounded-md text-sm font-medium"} aria-current="page">Home</Link>
                         
-                        <Link spy={true} smooth={true} duration={500} to="/#introduction" className={(scroll < 2 && scroll >= 1 ? "bg-gray-700" : "hover:bg-gray-700") + " text-base text-white px-3 py-2 rounded-md text-sm font-medium"}>Introduction</Link>
+                        <Link smooth={true} duration={500} to="/#introduction" className={(scroll < 2 && scroll >= 1 ? "bg-gray-700" : "hover:bg-gray-700") + " text-base text-white px-3 py-2 rounded-md text-sm font-medium"}>Introduction</Link>
 
-                        <Link spy={true} smooth={true} duration={500} to="/#hobbies" className={(scroll < 3 && scroll >= 2 ? "bg-gray-900" : "hover:bg-gray-700") + " text-base text-white px-3 py-2 rounded-md text-sm font-medium"}>Hobbies</Link>
+                        <Link smooth={true} duration={500} to="/#hobbies" className={(scroll < 3 && scroll >= 2 ? "bg-gray-900" : "hover:bg-gray-700") + " text-base text-white px-3 py-2 rounded-md text-sm font-medium"}>Hobbies</Link>
                     
-                        <Link spy={true} smooth={true} duration={500} to="/#projects" className={(scroll < 4 && scroll >= 3 ? "bg-gray-900" : "hover:bg-gray-700") + " text-base text-white px-3 py-2 rounded-md text-sm font-medium"}>Projects</Link>
+                        <Link smooth={true} duration={500} to="/#projects" className={(scroll < 4 && scroll >= 3 ? "bg-gray-900" : "hover:bg-gray-700") + " text-base text-white px-3 py-2 rounded-md text-sm font-medium"}>Projects</Link>
                     </div>
                     </div>
                 </div>
@@ -95,13 +95,13 @@ function Nav() {
         <div className={!menu ? 'sm:hidden' : 'hidden'} id="mobile-menu">
             <div className="px-2 pt-2 pb-3 space-y-1">
                 {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-                <Link spy={true} smooth={true} duration={500} to="/#home" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</Link>
+                <Link smooth={true} duration={500} to="/#home" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</Link>
 
-                <Link spy={true} smooth={true} duration={500} to="/#introduction" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Introduction</Link>
+                <Link smooth={true} duration={500} to="/#introduction" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Introduction</Link>
 
-                <Link spy={true} smooth={true} duration={500} to="/#hobbies" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Hobbies</Link>
+                <Link smooth={true} duration={500} to="/#hobbies" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Hobbies</Link>
             
-                <Link spy={true} smooth={true} duration={500} to="/#projects" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</Link>
+                <Link smooth={true} duration={500} to="/#projects" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</Link>
             </div>
         </div>
     </nav>
