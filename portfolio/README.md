@@ -1,70 +1,13 @@
-# Getting Started with Create React App
+# This is the repository for my portfolio app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created using NodeJs with a front end created using ReactJs
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Front-End design:
+- A large part of this app was created with the help of tailwindcss.
+- I wanted to create an app that uses a 3d environment, so a large part of this project was created with the help of the package @react-three/fiber, @react-three/drei, and @react-three/spring so huge shoutout to those geniuses.
+- The transitions were achieved by using framer-motion with its flexible motion options.
+- There is also a script that i wrote to map the current scroll of the website to the id of the components. I used this to achieve the effect of changing background of the navbar, but it could be used for many other things. I am aware of useScroll provided by framer-motion in the latest release, but I didn't want to import such a heavy hook for a small task.
+- To convert 3d .gltf files found online to WebGL renderable object to be used with react-three/fiber, i used gltf-pipeline and then gltfjsx.
+- The performance on mobile might be limited in my testing.
+- The responsive design is still being worked on. The elements that are tagged with tailwindcss classes are responsive, but currently the approach i have to make the 3d elements responsive is to shrink them according to the viewport dimensions, since there is a Rig components that allows for small movements in the 3d environment.
+- There were compatibility issues, since I left this project for a couple of months to tend to school, and I tried to fix as much as I could, but for now, the issues i know involves incompatibility with react 18 and some packages.
