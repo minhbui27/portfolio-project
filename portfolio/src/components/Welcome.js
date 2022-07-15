@@ -92,7 +92,7 @@ const Welcome = () => {
         <div className="background h-screen w-full">
             {/* the camera position takes parameter x,y,z. x and y already gives full sphere of rotation, z specifies how
             "far way the camera is from the origin" */}
-            <Canvas shadows colorManagement camera={{position: [0,0,8],fov: 70}}>
+            <Canvas shadows camera={{position: [0,0,8],fov: 70}}>
                 <ambientLight intensity={1}/>
                 <directionalLight 
                     castShadow
