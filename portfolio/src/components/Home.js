@@ -29,31 +29,6 @@ const Home = () => {
     
 
     const transition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
-    const firstName = { 
-        initial: {
-            y: 0,
-        },
-        animate: {
-            y: 1,
-            transition: { 
-                delayChildren: 0.6,
-                staggerChildren: 0.04, 
-                staggerDirection: 1,
-            }
-        }
-    }
-    const letter = {
-        initial: {
-          opacity: 0,
-          y: 100,
-        },
-        animate: {
-          y: 0,
-          opacity: 100,
-          transition: { duration: 1, ...transition },
-        },
-      };
-
     return( 
         
         <motion.div 
