@@ -15,7 +15,7 @@ import './Welcome.scss'
 // https://codesandbox.io/s/bounds-and-makedefault-forked-y12ie?file=/src/App.js
 // Compared to the original Bounds import from @react-three/drei, this version ensures that on window resize(first render or reload) the objects within the bounds doesn't get rotated
 import { Bounds } from '../helpers/BoundsNoRotation.tsx'
-function Stars(props) {
+export function Stars(props) {
   const ref = useRef()
   const [sphere] = useState(() =>
     random.inSphere(new Float32Array(7500), { radius: 15 })

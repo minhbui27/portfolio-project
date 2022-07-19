@@ -69,51 +69,56 @@ function ScrollControls({
     return state;
   }, [eps, damping, horizontal, pages]);
   React.useEffect(() => {
-    el.style.position = 'absolute';
-    el.style.width = '100%';
-    el.style.height = '100%';
-    el.style[horizontal ? 'overflowX' : 'overflowY'] = 'auto';
-    el.style[horizontal ? 'overflowY' : 'overflowX'] = 'hidden';
-    el.style.top = '0px';
-    el.style.left = '0px';
+    el.style.position = 'absolute'
+    el.style.width = '100%'
+    el.style.height = '100%'
+    el.style[horizontal ? 'overflowX' : 'overflowY'] = 'auto'
+    el.style[horizontal ? 'overflowY' : 'overflowX'] = 'hidden'
+    el.style.top = '0px'
+    // Change the line below to hide to show the scroll bar inside the ScrollControls tag
+    el.style.left = '18px'
 
     for (const key in style) {
-      el.style[key] = style[key];
+      el.style[key] = style[key]
     }
 
-    fixed.style.position = 'sticky';
-    fixed.style.top = '0px';
-    fixed.style.left = '0px';
-    fixed.style.width = '100%';
-    fixed.style.height = '100%';
-    fixed.style.overflow = 'hidden';
-    el.appendChild(fixed);
-    fill.style.height = horizontal ? '100%' : `${pages * distance * 100}%`;
-    fill.style.width = horizontal ? `${pages * distance * 100}%` : '100%';
-    fill.style.pointerEvents = 'none';
-    el.appendChild(fill);
-    target.appendChild(el); // Init scroll one pixel in to allow upward/leftward scroll
+    fixed.style.position = 'sticky'
+    fixed.style.top = '0px'
+    fixed.style.left = '0px'
+    fixed.style.width = '100%'
+    fixed.style.height = '100%'
+    fixed.style.overflow = 'hidden'
+    el.appendChild(fixed)
+    fill.style.height = horizontal ? '100%' : `${pages * distance * 100}%`
+    fill.style.width = horizontal ? `${pages * distance * 100}%` : '100%'
+    fill.style.pointerEvents = 'none'
+    el.appendChild(fill)
+    target.appendChild(el) // Init scroll one pixel in to allow upward/leftward scroll
 
-    el[horizontal ? 'scrollLeft' : 'scrollTop'] = 1;
-    const oldTarget = events.connected || gl.domElement;
-    requestAnimationFrame(() => events.connect == null ? void 0 : events.connect(el));
-    const oldCompute = get().events.compute;
+    el[horizontal ? 'scrollLeft' : 'scrollTop'] = 1
+    const oldTarget = events.connected || gl.domElement
+    requestAnimationFrame(() =>
+      events.connect == null ? void 0 : events.connect(el)
+    )
+    const oldCompute = get().events.compute
     setEvents({
       compute(event, state) {
-        const offsetX = event.clientX - target.offsetLeft;
-        const offsetY = event.clientY - target.offsetTop;
-        state.pointer.set(offsetX / state.size.width * 2 - 1, -(offsetY / state.size.height) * 2 + 1);
-        state.raycaster.setFromCamera(state.pointer, state.camera);
-      }
-
-    });
+        const offsetX = event.clientX - target.offsetLeft
+        const offsetY = event.clientY - target.offsetTop
+        state.pointer.set(
+          (offsetX / state.size.width) * 2 - 1,
+          -(offsetY / state.size.height) * 2 + 1
+        )
+        state.raycaster.setFromCamera(state.pointer, state.camera)
+      },
+    })
     return () => {
-      target.removeChild(el);
+      target.removeChild(el)
       setEvents({
-        compute: oldCompute
-      });
-      events.connect == null ? void 0 : events.connect(oldTarget);
-    };
+        compute: oldCompute,
+      })
+      events.connect == null ? void 0 : events.connect(oldTarget)
+    }
   }, [pages, distance, horizontal, el, fill, fixed, target]);
   React.useEffect(() => {
     if (events.connected === el) {
