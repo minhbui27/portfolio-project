@@ -42,8 +42,8 @@ function ScrollingText(props) {
     <group ref={ref}>
       <mesh rotation={props.rotation} position={props.position}>
         // This function below splits the introText intro array elements based
-        // on newline, then creates Text elements for each line that are
-        // vertically spaced by displacement apart.
+        // on newline, then creates Text elements for each line that are //
+        vertically spaced by displacement apart.
         {props.text.split('\n').map((t) => {
           displacement += props.separation
           // console.log(t);
