@@ -1,4 +1,4 @@
-import React, { useRef, Suspense, useState } from 'react'
+import React, { useRef, useEffect, Suspense, useState } from 'react'
 import { useInView, motion, AnimatePresence } from 'framer-motion/dist/framer-motion'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Text } from '@react-three/drei'

@@ -146,8 +146,19 @@ function ScrollLogo({ ...props }) {
 }
 softShadows()
 const Welcome = () => {
+	const [cursorPosition, setCursorPosition] = useState({x:0,y:0})
+	const handleCursorMove = (event) => {
+		setCursorPosition({
+			x : event.clientX - event.target.offsetLeft,
+			y : event.clientY - event.target.offsetTop
+		})
+	}
+	useEffect(() => {
+		console.log(cursorPosition)
+	},[cursorPosition])
+
   return (
-    <div className='background h-screen w-full'>
+    <div onMouseMove={handleCursorMove} className='background h-screen w-full'>
       {/* the camera position takes parameter x,y,z. x and y already gives full sphere of rotation, z specifies how
             "far way the camera is from the origin" */}
       <Canvas shadows camera={{ position: [0, 0, 8], fov: 70 }}>
@@ -183,7 +194,7 @@ const Welcome = () => {
                 </div>
               </Html>
               {/* <Car position={[0,0,0]}/> */}
-              <XWing scale={0.22} rotation={[1, -Math.PI / 2, 0]} />
+              <XWing scale={0.22} rotation={[1, -Math.PI / 2, 0]} cursorPosition={cursorPosition}/>
               {/* <X_Wing position={[-7,0,0]} scale={0.002} rotation={[1,Math.PI/2,0]}/> */}
               <WelcomeText position={[-6, 0, 1]} />
               <Html position={[0, -6, 0]}>
