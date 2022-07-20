@@ -7,9 +7,7 @@ import * as random from 'maath/random/dist/maath-random.esm'
 import { Html } from '@react-three/drei/web'
 import SpaceStation from './SpaceStation'
 import XWing from './Xwing'
-import X_Wing from './X_Wing'
-import BB8 from './Bb8'
-import Car from './Car'
+import useWindowDimensions from '../helpers/WindowDimensions'
 import './Welcome.scss'
 // Bounds file was made by some random guy on github and i straight up yanked his code. Link to the fork:
 // https://codesandbox.io/s/bounds-and-makedefault-forked-y12ie?file=/src/App.js
@@ -146,22 +144,23 @@ function ScrollLogo({ ...props }) {
 }
 softShadows()
 const Welcome = () => {
-	const [cursorPosition, setCursorPosition] = useState({x:0,y:0})
-	const handleCursorMove = (event) => {
-		setCursorPosition({
-			x : event.clientX - event.target.offsetLeft,
-			y : event.clientY - event.target.offsetTop
-		})
-	}
-	useEffect(() => {
-		console.log(cursorPosition)
-	},[cursorPosition])
+  const {height, width} = useWindowDimensions()
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
+  const handleCursorMove = (event) => {
+    setCursorPosition({
+      x: event.clientX - event.target.offsetLeft,
+      y: event.clientY - event.target.offsetTop,
+    })
+  }
+  // useEffect(() => {
+  //   console.log(cursorPosition)
+  // }, [cursorPosition])
 
   return (
     <div onMouseMove={handleCursorMove} className='background h-screen w-full'>
       {/* the camera position takes parameter x,y,z. x and y already gives full sphere of rotation, z specifies how
             "far way the camera is from the origin" */}
-      <Canvas shadows camera={{ position: [0, 0, 8], fov: 70 }}>
+      <Canvas shadows camera={{aspect: {width}/{height},position: [0, 0, 8], fov: 70 }}>
         <ambientLight intensity={1} />
         <directionalLight
           castShadow
@@ -194,7 +193,11 @@ const Welcome = () => {
                 </div>
               </Html>
               {/* <Car position={[0,0,0]}/> */}
-              <XWing scale={0.22} rotation={[1, -Math.PI / 2, 0]} cursorPosition={cursorPosition}/>
+              <XWing
+                scale={0.22}
+                rotation={[1, -Math.PI / 2, 0]}
+                cursorPosition={cursorPosition}
+              />
               {/* <X_Wing position={[-7,0,0]} scale={0.002} rotation={[1,Math.PI/2,0]}/> */}
               <WelcomeText position={[-6, 0, 1]} />
               <Html position={[0, -6, 0]}>

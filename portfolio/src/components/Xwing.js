@@ -6,17 +6,27 @@ source: https://sketchfab.com/3d-models/poe-dameron-x-wing-a7fd082a1ad54c32bacee
 title: Poe Dameron X wing
 */
 
-import React, { useRef } from 'react'
+import React, { useEffect, useRef,useState } from 'react'
 import { useGLTF } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
+import { useFrame, useUpdate } from '@react-three/fiber'
 import { useScroll } from '../helpers/ScrollControls'
 
 export default function Model({ ...props }) {
-  const scroll = useScroll()
-  useFrame((state,delta) => {
-    const offset = scroll.offset
+  const [prevPositions, setPrevPositions] = useState({ x: 0, y: 0 })
+  const [positions, setPositions] = useState({ x: 0, y: 0 })
+  useEffect(() => {
+    setPrevPositions({
+      x: positions.x,
+      y: positions.y,
+    })
+    setPositions({
+      x: props.cursorPosition.x,
+      y: props.cursorPosition.y,
+    })
+  }, [props.cursorPosition])
+  useFrame((state, delta) => {
     group.current.rotation.z += 0.001
-    group.current.position.set(-Math.sin(offset)*(20/Math.sin(1)) + 6, 0, Math.sin(offset)*(5/Math.sin(1))-3)
+    group.current.position.set(positions.x, positions.y, 0)
   })
   const group = useRef()
   const { nodes, materials } = useGLTF('/xwing.gltf')
@@ -25,7 +35,10 @@ export default function Model({ ...props }) {
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <group rotation={[-Math.PI / 2, 0, 0]}>
-            <mesh geometry={nodes.default_initialShadingGroup_0.geometry} material={materials.initialShadingGroup} />
+            <mesh
+              geometry={nodes.default_initialShadingGroup_0.geometry}
+              material={materials.initialShadingGroup}
+            />
           </group>
         </group>
       </group>
