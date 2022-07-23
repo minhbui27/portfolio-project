@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import { HashLink as Link } from 'react-router-hash-link'
 import { useState } from 'react'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 import './Nav.scss'
 
 //The smooth scroll animations are made using the package react-scroll, for additional animation options
@@ -116,10 +117,7 @@ function Nav() {
               <div className='flex space-x-4'>
                 {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
 
-                <Link
-                  smooth={true}
-                  duration={500}
-                  to='/#home'
+                <AnchorLink href='#home'
                   className={
                     (scroll < 1
                       ? 'WelcomeText'
@@ -129,12 +127,10 @@ function Nav() {
                   aria-current='page'
                 >
                   Home
-                </Link>
+                </AnchorLink>
 
-                <Link
-                  smooth={true}
-                  duration={500}
-                  to='/#introduction'
+                <AnchorLink
+                  href='#introduction'
                   className={
                     (scroll < 2 && scroll >= 1
                       ? 'bg-gray-700'
@@ -143,12 +139,10 @@ function Nav() {
                   }
                 >
                   Introduction
-                </Link>
+                </AnchorLink>
 
-                <Link
-                  smooth={true}
-                  duration={500}
-                  to='/#hobbies'
+                <AnchorLink
+                  href='#hobbies'
                   className={
                     (scroll < 3 && scroll >= 2
                       ? 'bg-gray-900'
@@ -157,12 +151,10 @@ function Nav() {
                   }
                 >
                   Hobbies
-                </Link>
+                </AnchorLink>
 
-                <Link
-                  smooth={true}
-                  duration={500}
-                  to='/#projects'
+                <AnchorLink
+                  href='#projects'
                   className={
                     (scroll < 4 && scroll >= 3
                       ? 'bg-gray-900'
@@ -171,7 +163,7 @@ function Nav() {
                   }
                 >
                   Projects
-                </Link>
+                </AnchorLink>
               </div>
             </div>
           </div>
@@ -180,41 +172,33 @@ function Nav() {
       <div className={!menu ? 'sm:hidden' : 'hidden'} id='mobile-menu'>
         <div className='px-2 pt-2 pb-3 space-y-1'>
           {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-          <Link
-            smooth={true}
-            duration={500}
-            to='/#home'
+          <AnchorLink
+            href='#home'
             className='text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'
           >
             Home
-          </Link>
+          </AnchorLink>
 
-          <Link
-            smooth={true}
-            duration={500}
-            to='/#introduction'
+          <AnchorLink
+            href='#introduction'
             className='text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'
           >
             Introduction
-          </Link>
+          </AnchorLink>
 
-          <Link
-            smooth={true}
-            duration={500}
-            to='/#hobbies'
+          <AnchorLink
+            href='#hobbies'
             className='text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'
           >
             Hobbies
-          </Link>
+          </AnchorLink>
 
-          <Link
-            smooth={true}
-            duration={500}
-            to='/#projects'
+          <AnchorLink
+            href='#projects'
             className='text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'
           >
             Projects
-          </Link>
+          </AnchorLink>
         </div>
       </div>
     </nav>
